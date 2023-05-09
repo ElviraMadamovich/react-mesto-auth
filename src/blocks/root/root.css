@@ -1,0 +1,23 @@
+.root {
+    min-width: 1280px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 1);
+    font-family: 'Inter', sans-serif;
+    color: rgba(255, 255, 255, 1);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 0;
+}
+
+* {
+    scroll-behavior: smooth;
+}
