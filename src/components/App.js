@@ -21,7 +21,7 @@ function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState(null);
-  const [cardToBeDeleted, setToBeDeleted] = React.useState(null);
+  const [cardToBeDeleted, setCardToBeDeleted] = React.useState(null);
   const [isOpenInfoTooltip, setOpenInfoTooltip] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
   const [cards, setCards] = React.useState([]);
@@ -130,7 +130,7 @@ function App() {
   }
 
   function handleDelete(card) {
-    setToBeDeleted(card);
+    setCardToBeDeleted(card);
   }
 
   function closeAllPopups() {
@@ -138,7 +138,7 @@ function App() {
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setSelectedCard(null);
-    setToBeDeleted(null);
+    setCardToBeDeleted(null);
     setOpenInfoTooltip(false)
   }
 
