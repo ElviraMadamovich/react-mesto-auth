@@ -1,15 +1,12 @@
 import React from "react";
+import { usePopupClose } from "../hooks/usePopupClose";
 
 function ImagePopup({ card, onClose }) {
 
-  function handleOverlayClose(event) {
-    if (event.target.classList.contains('popup')) {
-      onClose();
-    }
-  }
+  usePopupClose(card?.link, onClose)
 
   return (
-    <section className={`popup image-popup` + (card !== null && " popup_opened")} onClick={handleOverlayClose}>
+    <section className={`popup image-popup` + (card !== null && " popup_opened")}>
       <div className="image-popup__container">
         <button type="button" className="popup__close" onClick={onClose}></button>
         <img className="image-popup__pic" src={card?.link} alt={card?.name} />

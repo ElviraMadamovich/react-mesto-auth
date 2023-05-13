@@ -1,12 +1,12 @@
 import Authorization from "./Authorization";
-import { useValidation } from "./useValidation";
+import { useValidation } from "../hooks/useValidation";
 
 function Login({ onLogin }) {
-  const { values, handleChange, handleReset, errors, isValid } = useValidation()
+  const { values, handleUpdate, resetForm, errors, isValid } = useValidation()
 
   function submitAuthorization(e, setLoadingImage) {
     e.preventDefault();
-    onLogin(values, handleReset, setLoadingImage);
+    onLogin(values, resetForm, setLoadingImage);
   }
 
   return (
@@ -26,7 +26,7 @@ function Login({ onLogin }) {
               maxLength="40"
               required
               value={values.emailInput || ''}
-              onChange={handleChange}
+              onChange={handleUpdate}
               autoComplete="new-email" />
 
             <span
@@ -43,7 +43,7 @@ function Login({ onLogin }) {
               maxLength="200"
               required
               value={values.password || ''}
-              onChange={handleChange}
+              onChange={handleUpdate}
               autoComplete="new-password" />
 
             <span

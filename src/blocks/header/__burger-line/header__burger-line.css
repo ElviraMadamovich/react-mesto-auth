@@ -3,15 +3,14 @@
         display: block;
         margin: 0;
         position: absolute;
-        min-width: 23px;
-        max-height: 3px;
-        outline: 3px solid #FFFFFF;
+        min-width: 19px;
+        outline: 2px solid #FFFFFF;
         transition: 0.2s;
     }
 
     .header__burger-line:nth-child(1) {
-        right: 4px;
-        top: 5px;
+        right: 3px;
+        top: 8px;
     }
 
     .header__burger_active .header__burger-line:nth-child(1) {
@@ -19,8 +18,8 @@
     }
 
     .header__burger-line:nth-child(2) {
-        right: 4px;
-        top: 14px
+        right: 3px;
+        top: 17px
     }
 
     .header__burger_active .header__burger-line:nth-child(2) {
@@ -28,8 +27,8 @@
     }
 
     .header__burger-line:nth-child(3) {
-        right: 4px;
-        top: 23px
+        right: 3px;
+        top: 25px
     }
 
     .header__burger_active .header__burger-line:nth-child(3) {

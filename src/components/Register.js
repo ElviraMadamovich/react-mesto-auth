@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
 import Authorization from "./Authorization";
-import { useValidation } from "./useValidation";
+import { useValidation } from "../hooks/useValidation";
 
 function Register({ onRegister }) {
-  const { values, handleReset, handleChange, errors, isValid } = useValidation();
+  const { values, resetForm, handleUpdate, errors, isValid } = useValidation();
 
   function submitAuthorization(e, setLoadingImage) {
     e.preventDefault();
-    onRegister(values, handleReset, setLoadingImage)
+    onRegister(values, resetForm, setLoadingImage)
   }
 
   return (
@@ -27,7 +27,7 @@ function Register({ onRegister }) {
               maxLength="40"
               placeholder="Email"
               value={values.emailInput || ''}
-              onChange={handleChange}
+              onChange={handleUpdate}
               autoComplete="new-email" />
 
             <span
@@ -44,7 +44,7 @@ function Register({ onRegister }) {
               maxLength="200"
               placeholder="Пароль"
               value={values.password || ''}
-              onChange={handleChange}
+              onChange={handleUpdate}
               autoComplete="new-password" />
 
             <span id="name-password-error"

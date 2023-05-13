@@ -28,7 +28,7 @@ export const authorize = (email, password) => {
     .then(res => checkResponse(res))
 }
 
-export const openPage = (token) => {
+export const checkToken = (token) => {
   return fetch(`${authUrl}/users/me`, {
     method: "GET",
     headers: {

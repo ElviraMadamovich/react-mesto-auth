@@ -7,10 +7,9 @@
         border-bottom: 1px solid #545454;
         padding: 0 0 40px 0;
         top: 40px;
-        left: 463px;
-        right: 89px;
+        left: 0;
+        max-width: 320px;
         width: 100%;
         margin: 0 0 40px 0;
-        max-width: 358px;
     }
 }

@@ -1,23 +1,11 @@
-import React, { useEffect } from 'react';
-import success from '../images/success.svg'
-import failed from '../images/fail.svg'
+import React from 'react';
+import success from '../images/success.svg';
+import failed from '../images/fail.svg';
+import { usePopupClose } from '../hooks/usePopupClose';
 
 function InfoTooltip({ isOpen, onClose, message }) {
 
-  useEffect(() => {
-    if (isOpen) {
-      document.addEventListener('keydown', handleEscClose)
-    }
-    return () => {
-      document.removeEventListener('keydown', handleEscClose)
-    }
-  }, [isOpen])
-
-  function handleEscClose(evt) {
-    if (evt.key === 'Escape') {
-      onClose();
-    }
-  };
+  usePopupClose(isOpen, onClose)
 
   function handleCloseButton(evt) {
     if (evt.target.classList.contains('popup_opened')) {

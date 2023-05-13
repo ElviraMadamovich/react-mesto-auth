@@ -1,61 +1,50 @@
 import React from "react";
 import PopupWithForm from "./PopupWithForm";
+import { useValidation } from "../hooks/useValidation";
 
-function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
-  const [name, setName] = React.useState("");
-  const [link, setLink] = React.useState("");
+function AddPlacePopup({ isOpen, onClose, onAddPlace, isLoading }) {
+  const { values, errors, isValid, handleUpdate, resetForm } = useValidation();
 
   React.useEffect(() => {
-    setName("");
-    setLink("");
-  }, [isOpen]);
-
-  function handleChangeName(event) {
-    const text = event.target.value;
-    setName(text);
-  }
-
-  function handleChangeLink(event) {
-    const text = event.target.value;
-    setLink(text);
-  }
+    resetForm();
+  }, [isOpen, resetForm]);
 
   function handleSubmit(event) {
     event.preventDefault();
-    onAddPlace({
-      name,
-      link,
-    });
+    onAddPlace(values);
   }
 
   return (
     <PopupWithForm
       title={'Новое место'}
       name="card"
-      buttonText="Создать"
+      buttonDescription={isLoading ? 'Сохранение...' : 'Сохранить'}
       isOpen={isOpen}
       onClose={onClose}
-      onSubmit={handleSubmit}>
+      onSubmit={handleSubmit}
+      isDisabled={!isValid}>
 
       <input
-        onChange={handleChangeName}
-        value={name}
+        value={values.name || ""}
+        onChange={handleUpdate}
         type="text"
         className="popup__content popup__content_input_title"
         id="caption"
-        name="caption"
+        name="name"
         placeholder="Название"
         required
         minLength={2}
         maxLength={30} />
 
       <span
-        className="popup__error popup__error_active popup__error_title"
-        id="caption-error" />
+        className={`${errors.caption ? "popup__error popup__error_active popup__error_title" : "popup__error"}`}
+        id="caption-error">
+        {errors.caption}
+      </span>
 
       <input
-        onChange={handleChangeLink}
-        value={link || ''}
+        value={values.link || ""}
+        onChange={handleUpdate}
         type="url"
         className="popup__content popup__content_input_link"
         id="link"
@@ -64,8 +53,10 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
         required />
 
       <span
-        className="popup__error popup__error_active popup__error_link"
-        id="link-error" />
+        className={`${errors.link ? "popup__error popup__error_active popup__error_link" : "popup__error"}`}
+        id="link-error">
+        {errors.link}
+      </span>
     </PopupWithForm>
   )
 }
